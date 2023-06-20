@@ -967,19 +967,19 @@ fn bindgen_test_layout_pollfd() {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct timeval {
-    pub tv_sec: core::ffi::c_long,
+    pub tv_sec: core::ffi::c_longlong,
     pub tv_usec: core::ffi::c_long,
 }
 #[test]
 fn bindgen_test_layout_timeval() {
     assert_eq!(
         ::core::mem::size_of::<timeval>(),
-        8usize,
+        16usize,
         concat!("Size of: ", stringify!(timeval))
     );
     assert_eq!(
         ::core::mem::align_of::<timeval>(),
-        4usize,
+        8usize,
         concat!("Alignment of ", stringify!(timeval))
     );
     fn test_field_tv_sec() {
@@ -1006,7 +1006,7 @@ fn bindgen_test_layout_timeval() {
                 let ptr = uninit.as_ptr();
                 ::core::ptr::addr_of!((*ptr).tv_usec) as usize - ptr as usize
             },
-            4usize,
+            8usize,
             concat!(
                 "Offset of field: ",
                 stringify!(timeval),
